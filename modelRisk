@@ -1,0 +1,24 @@
+\section{Model risk}
+Model risk is the risk that the firm's estimate of the distribution of the change in surplus
+\begin{definition}[Model risk]
+The risk that \begin{math} g \left( P_t, I_t, k \right) - \hat{g} \left( P_t, I_t, k \right) > 0 \end{math}
+\end{definition}
+%
+Model risk can itself be decomposed into the following components:
+\begin{itemize}
+\item the risk of misestimating the one-year cashflow distribution: \begin{math} \tilde{c}_t - \hat{c}^*_t > 0 \end{math}
+
+\item the risk of misestimating the distribution of reserves in the next time period: \begin{math} \tilde{f}_{t+1} \left( \tilde{I}_{t+1} \right) - \hat{f}^*_{t+1} \left( \hat{I}^*_{t+1} \right) > 0 \end{math}, which itself consists of:
+
+\begin{itemize}
+\item the risk of misestimating the distribution of functions used at time \begin{math} t+1 \end{math}: \begin{math} \tilde{f} \left( \tilde{I}_{t+1} \right) - f^* \left( \tilde{I}_{t+1} \right) > 0 \end{math}
+\item the risk of misetimating the distribution of information at time \begin{math} t+1 \end{math}:\\
+\begin{math} \hat{f}^*_{t+1} \left( \tilde{I}_{t+1} \right) - \hat{f}^*_{t+1} \left( \hat{I}^*_{t+1} \right) > 0 \end{math}
+\end{itemize}
+%+ \mathrm{E} \left[ f \left( I_{t+1} \mid I_t \right) \right] - \mathrm{E} \left[ \hat{f} \left( \hat{I_{t+1}} \mid I_t \right) \right]\\
+%+ \left[ \tilde{f} \left( \tilde{I}_{t+1} \right) - f^* \left( I^*_{t+1} \right) \right]\\
+%+ \left[ \tilde{F} \left( \tilde{I}_{t+1} \right) - F^* \left( I^*_{t+1} \right) \right]
+%\end{math}
+\end{itemize}
+
+\input{quotes}

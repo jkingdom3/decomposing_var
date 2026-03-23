@@ -1,0 +1,28 @@
+\section{Decomposition of risks excluding model risk}
+
+
+%%% PAYOUT RISK
+\subsection{Payout risk}
+Payout risk is the risk that the actual policyholders are different to those currently expected.
+
+\begin{definition}[Payout risk]
+The risk that: \begin{math} \tilde{c}_t - \mathrm{E} \left[ c_t \right] > 0 \end{math}
+\end{definition}
+
+
+%%% RECALIBRATION RISK
+\subsection{Recalibration risk}
+Recalibration risk is the risk that the firm's best estimate provisions in the next time period are different to those currently expected.
+
+\begin{definition}[Recalibration risk]
+The risk that: \begin{math} \tilde{f}_{t+1} \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1} \mid I_t \right) \right] > 0 \end{math}
+\end{definition}
+
+
+%%% PROVISIONING RISK
+\subsection{Provisionining risk}
+Provisioning risk is the risk that the firm's best estimate provisions in the next time period are different to those expected by the market and hence different to the transfer value of the firm's liabilities.
+
+\begin{definition}[Provisioning risk]
+The risk that: \begin{math} \tilde{F} \left( \tilde{I}_{t+1} \right) - f \left( \tilde{I}_{t+1} \right) > 0 \end{math}
+\end{definition}
