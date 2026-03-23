@@ -22,11 +22,11 @@ The problem we are then faced with is to find a function \begin{math} g:P \times
 
 \subsection{Solution to the problem}
 We now define the function \begin{math} g:P \times I \times \left[ 0,1 \right] \rightarrow \mathbb R \end{math} as the function which, at time \begin{math} t \end{math}, produces the firm's risk capital for portfolio \begin{math} P_t \subset{P} \end{math} and information set \begin{math} I_t \subset{I} \end{math} at the given confidence level \begin{math} k \in{\left[ 0, 1 \right]} \end{math}.
-\begin{definition}[\begin{math} A \left( y \right) \end{math}]
-The multivalued function \begin{math} A:\mathbb{R} \rightarrow \mathbb{R} \times I \times F \times F \end{math} produces a set of values such that:
+\begin{definition}[Tail scenarios $A \left( k \right)$]
+The multivalued function \begin{math} A:\left[ 0,1 \right] \rightarrow \mathbb{R} \times I \times F \times F \end{math} produces the set of scenarios such that:
 \begin{equation}
-\left[ \tilde{c}_t - \mathrm{E} \left[ c_t \right] \right]
-+ \left[ f \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1} \mid I_t \right) \right] \right] \leq k
+\left( \left[ \tilde{c}_t - \mathrm{E} \left[ c_t \right] \right]
++ \left[ f \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1} \mid I_t \right) \right] \right] \right) \cdot \left( 1 + r_t \right) ^ {-1} \geq g \left( P_t, I_t, k \right)
 \end{equation}
 \end{definition}
 \begin{equation}
@@ -38,7 +38,5 @@ where \begin{math} r_t \in{\mathbb{R ^ +}} \end{math} is the one-year spot risk-
 %
 \begin{equation}
 \left( \hat{c}^*, \hat{I}^*_{t+1}, \hat{f}^*_{t+1}, \hat{F}^*_{t+1} \right)
-\in \argmin_{c, I_{t+1}, f_{t+1}, F_{t+1}}
-\left( \left[ \tilde{c}_t - \mathrm{E} \left[ c_t \right] \right]
-+ \left[ f \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1} \mid I_t \right) \right] \right] \right) \cdot \left( 1 + r_t \right) ^ {-1} \geq g \left( P_t, I_t, k \right)
+\in A \left( k \right)
 \end{equation}
