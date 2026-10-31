@@ -1,40 +1,124 @@
 \section{A general description of the environment} \label{section:general_description}
-Every year, the firm must estimate its technical provisions given the information available to it at that point in time. We define technical provisions as the value of funds required to transfer those liabilities (`transfer value').
+Every year, the firm must estimate the transfer value of its business and its
+sub-components given the information available to it at that point in time. The
+transfer value of its business consists of the transfer value of its
+liabilities and the market value of the assets it owns, including intanglibles
+such as brand value. We define the transfer value of its liabilities as the
+value of funds required to transfer those liabilities to a third party. This is
+the same concept, in principle, as Solvency II/Solvency UK Technical
+Provisions, but they are defined more narrowly e.g. with a mandated methodology
+for calculating the Matching Adjustment or the Risk Margin.
 
 \subsection{Information set} \label{section:information_set}
-We denote the information set as $ I_t \subset I $ as being the set of all available information, or the `global' information set, at time $ t $, where $ I $ is the set of all possible information sets (the `information universe'). It is then clear that $ I_t \subset I_{t+j} \forall j \geq 0 $ (i.e. any information known in a given year is also known in all subsequent years). We also denote the set $ i_t \subset I_t $ as the set of information \textit{known to the firm}, or the 'local' information set, at time \(t\). 
+We denote the information set as $I_t \subset I$ as being the set of all
+available information, or the `global' information set, at time $t$, where $I$
+is the set of all possible information sets (the `information universe'). It is
+then clear that $I_t \subset I_{t+j} \forall j \geq 0$ (i.e. any information
+known in a given year is also known in all subsequent years). We also denote
+the set $I_{j,t} \subset I_t$ as the \textit{possible} set of information
+available to firm $j$, or the firm's `local' information set, at time $t$, and
+$i_{j,t} \in I_{j,t}$ as the \textit{actual} information available to the firm. 
+
+In a similar way, we define $i_t \in I_t$ as the actual information
+available (and known) to the market. We assume that the strong form of the
+Efficient Market Hypothesis holds, such that all possible information is
+reflected in market prices - while a firm may have information on its own book
+of liabilities that is not publicly known, we assume that in any transfer of
+business this information would be captured by the due diligence process.
 
 \subsection{The firm's portfolio} \label{section:portfolio}
-We denote the portfolio set $ P_t \subset P $ as the set describing the portfolio characteristics of the firm's assets and liabilities, or the portfolio-specific information, where, as above, $ P $ is the set of all possible portfolios (the `portfolio universe').
+We denote the portfolio $p_{j,t} \in P_{j,t} \subset P_t \subset P$ as the data
+describing the portfolio characteristics of the firm's assets and liabilities,
+or the portfolio-specific information, where, as above, $P$ is the set of all
+possible portfolios (the `portfolio universe'), $P_t$ is the set of portfolios
+available at time $t$, and $P_{j,y}$ is the set of portfolios available to firm
+$j$ at time $t$. Unlike information, $P_{j,t} \not \subset P_{j,t+1}$ since,
+for example, the firm could gain or lose its licence to trade in certain
+institutional assets or derivatives, or indeed to sell business to a certain
+segment of the market - such as a life insurance group acquiring a licence,
+either via acquisition or organic growth, to sell P\&C (property and casualty)
+business, or similarly acquiring a licence to sell businss in another
+territory.
 
-\subsection{Information choice function} \label{section:information_choice_function}
-Given this, we denote the set function $ g_t:i_t \rightarrow i_t $ as the `information choice function' used within the firm which maps the local information set onto a subset of that. This subset is the information which is used by the firm as an input into its valuation models (which can include expert judgement - see Section \ref{section:valuation}). In other words, this function represents the process employed by the firm to select the information used to help formulate a value for the firm's assets and liabilities. Keeping notation consistent, we define \(g\) as the set of all possible information choice functions, so that $ g_t \subset g $.
+\subsection{Information choice function}
+\label{section:information_choice_function}
+Given this, we denote the function $g_{j,t}:I_{j,t} \rightarrow I_{j,t}$ as the
+`information choice function' used within the firm which maps the local
+information set onto an element of that. This element is the information which
+is used by the firm as an input into its valuation models (which can include
+expert judgement - see Section \ref{section:valuation}). In other words, this
+function represents the processes employed by the firm to select the
+information used to help formulate a value for the firm's assets and
+liabilities. Keeping notation consistent, we define $G$ as the set of all
+possible information choice functions, so that $ g_{j,t} \in G $.
 
 \subsection{Valuation} \label{section:valuation}
-We can now define the set function $ f_t:P \times I \rightarrow \mathbb{R} $ as the function at time $ t $ which gives the firm's assessment of the value of its own funds for portfolio $ P_t $, given the information set $ I_t $.
+We can now define the function $f_{j,t}:P_{j,t} \times I_{j,t} \times G
+\rightarrow\mathbb{R}$ as the function at time $t$ which gives firm $j$'s
+assessment of the transfer value of its business with portfolio $p_{j,t}$,
+given information $i_{t,j}$ and information choice function $g_{j,t}$.
+
+In conjunction to this, we also define the function $f_t:P_{j,t}
+\times I_t \times G$ as the market valuation function for the firm's portfolio
+$p_{j,t}$, the information known to the market $i_{t}$, and the market's
+valuation function $g_t$.
 
 \subsection{Specifying `true' VaR}
-We distinguish between `true' VaR and `estimated' VaR. We make this distinction since we can never know for certain the true probability law underlying a random process and therefore a firm's VaR can only be an estimate of the true VaR for that risk and as such is a random variable itself. Under this framework, we can then make explicit statements about model risk by comparing the true VaR to a firm's estimated VaR.
+We distinguish between `true' VaR and `estimated' VaR. We make this distinction
+since we can never know for certain the true probability law underlying a
+random process; we can only estimate this, and therefore a firm's VaR can only
+be an estimate of the true VaR risk and as such is a random variable itself.
+Under this framework, we can then make explicit statements about model risk by
+comparing the true VaR to a firm's estimated VaR.
 
-In order to specify the true one-year VaR, we first need to define the `true' transfer value of a firm's liabilities in one year's time and the true value of its assets, given the global and the portfolio-specific information at that moment in time; consistent with the notation above, this is given as $ f_{t+1} \left( P_{t+1}, I_{t+1} \right) $. We also define the function $ c:P \times P \times I \rightarrow \mathbb{R} $ as the one-year cashflow of the firm. For notational brevity, we define $ c_{t} \in \mathbb{R} $ as $ c_{t} = c \left( P_{t}, P_{t+1}, I_{t+1} \right)$ and the random variable $ \tilde{c}_{t} = c \left( P_{t}, \tilde{P}_{t+1}, \tilde{I}_{t+1} \right)$.
+In order to specify the true one-year VaR, we first need to define the `true'
+transfer value of a firm's liabilities in one year's time and the true value of
+its assets, given the global and the portfolio-specific information at that
+moment in time; consistent with the notation above, this is given as
+$ f_{t+1} \left( P_{t+1}, I_{t+1} \right) $. We also define the function
+$ c:P \times P \times I \rightarrow \mathbb{R} $ as the one-year cashflow of
+the firm. For notational brevity, we define $ c_{t} \in \mathbb{R} $ as $ c_{t}
+= c \left( P_{t}, P_{t+1}, I_{t+1} \right)$ and the random variable
+$ \tilde{c}_{t} = c \left( P_{t}, \tilde{P}_{t+1}, \tilde{I}_{t+1} \right)$.
 
-The problem we are then faced with is to find a function $ g:P \times I \times \left[ 0,1 \right] \rightarrow \mathbb R $ which, at any given time $ t $, produces the risk capital for a one-year VaR for a portfolio $ P_t \subset{P} $ and information set $ I_t \subset{I} $ at the given confidence level $ k \in{\left[ 0, 1 \right]} $ (e.g. $ k = 0.995 $ as in the ICA/SCR). This implies that the probability $ K $ of remaining solvent over the run-off of the portfolio (i.e. the probability of paying all liabilities in full over the lifetime of the portfolio) is given as $ K = \left( 1 - k \right) ^ T $, where $ T $ is the term of the run-off\footnote{Note that these conditions combined are stronger than simply the condition that the probability of non-ruin over the portfolio run-off is K, which can be achieved by setting the probability of non-ruin over some years to be lower than $ k $ and over other years to be higher than $ k $}.
+The problem we are then faced with is to find a function $ g:P \times I \times
+\left[ 0,1 \right] \rightarrow \mathbb R $ which, at any given time $ t $,
+produces the risk capital for a one-year VaR for a portfolio $ P_t \subset{P}
+$ and information set $ I_t \subset{I} $ at the given confidence level
+$ k \in{\left[ 0, 1 \right]} $ (e.g. $ k = 0.995 $ as in the ICA/SCR). This
+implies that the probability $ K $ of remaining solvent over the run-off of the
+portfolio (i.e. the probability of paying all liabilities in full over the
+lifetime of the portfolio) is given as $ K = \left( 1 - k \right) ^ T $, where
+$ T $ is the term of the run-off\footnote{Note that these conditions combined
+are stronger than simply the condition that the probability of non-ruin over
+the portfolio run-off is K, which can be achieved by setting the probability of
+non-ruin over some years to be lower than $ k $ and over other years to be
+higher than $ k $}.
 
 \subsection{Solution to the problem}
-We now define the function $ g:P \times I \times \left[ 0,1 \right] \rightarrow \mathbb R $ as the function which, at time $ t $, produces the firm's risk capital for portfolio $ P_t \subset{P} $ and information set $ I_t \subset{I} $ at the given confidence level $ k \in{\left[ 0, 1 \right]} $.
+We now define the function $ g:P \times I \times \left[ 0,1 \right] \rightarrow
+\mathbb R $ as the function which, at time $ t $, produces the firm's risk
+capital for portfolio $ P_t \subset{P} $ and information set $ I_t \subset{I} $
+at the given confidence level $ k \in{\left[ 0, 1 \right]} $.
 \begin{definition}[Tail scenarios $A \left( k \right)$]
-The multivalued function $ A:\left[ 0,1 \right] \rightarrow \mathbb{R} \times I \times F \times F $ produces the set of scenarios such that:
+The multivalued function $ A:\left[ 0,1 \right] \rightarrow \mathbb{R}
+\times I \times F \times F $ produces the set of scenarios such that:
 \begin{equation}
 \left( \left[ \tilde{c}_t - \mathrm{E} \left[ c_t \right] \right]
-+ \left[ f \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1} \mid I_t \right) \right] \right] \right) \cdot \left( 1 + r_t \right) ^ {-1} \geq g \left( P_t, I_t, k \right)
++ \left[ f \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1}
+\mid I_t \right) \right] \right] \right) \cdot \left( 1 + r_t \right) ^ {-1}
+\geq g \left( P_t, I_t, k \right)
 \end{equation}
 \end{definition}
 \begin{equation}
 \Pr \left\{ \left( \left[ \tilde{c}_t - \mathrm{E} \left[ c_t \right] \right]
-+ \left[ f \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1} \mid I_t \right) \right] \right] \right) \cdot \left( 1 + r_t \right) ^ {-1} \geq g \left( P_t, I_t, k \right) \right\}
-= k
++ \left[ f \left( \tilde{I}_{t+1} \right) - \mathrm{E} \left[ f \left( I_{t+1}
+\mid I_t \right) \right] \right] \right) \cdot \left( 1 + r_t \right) ^ {-1}
+\geq g \left( P_t, I_t, k \right) \right\} = k
 \end{equation}
-where $ r_t \in{\mathbb{R ^ +}} $ is the one-year spot risk-free rate of interest at time $ t $. The SCR at time $ t $ is therefore given as $ g \left( P_t, I_t, 0.005 \right) $
+where $ r_t \in{\mathbb{R ^ +}} $ is the one-year spot risk-free rate of
+interest at time $ t $. The SCR at time $ t $ is therefore given as
+$ g \left( P_t, I_t, 0.005 \right) $
 %
 \begin{equation}
 \left( \hat{c}^*, \hat{I}^*_{t+1}, \hat{f}^*_{t+1}, \hat{F}^*_{t+1} \right)
